@@ -74,8 +74,16 @@ endfor
 reg = (lambda/(2*m)) * ((sum(sum(Theta1(:,2:end).^2)) + sum(sum(Theta2(:,2:end).^2))));
 J = 1/m * sum(sum((-filteredY .* log(out) - ((1-filteredY) .* log(1-out))))) + reg;
 
+delta3 = out - filteredY;
+delta2 = delta3 * Theta2(:,2:end) .* sigmoidGradient(X * Theta1');
+bigD1 = delta2' * X;
+bigD2 = delta3' * hl;
 
+Theta1_grad = (1/m) * bigD1;
+Theta2_grad = (1/m) * bigD2;
 
+Theta1_grad(:,2:end) = Theta1_grad(:,2:end) + (lambda/m) * Theta1(:,2:end);
+Theta2_grad(:,2:end) = Theta2_grad(:,2:end) + (lambda/m) * Theta2(:,2:end);
 
 
 

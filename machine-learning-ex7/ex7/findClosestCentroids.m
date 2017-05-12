@@ -20,13 +20,14 @@ idx = zeros(size(X,1), 1);
 %
 % Note: You can use a for-loop over the examples to compute this.
 %
+for i = 1:size(X)
+  for j = 1:size(centroids)
+    range(j) = norm(centroids(j,:) - X(i,:)).^2;
+  end
 
-
-
-
-
-
-
+  [M,I] = min(range);
+  idx(i) = I;
+end
 % =============================================================
 
 end

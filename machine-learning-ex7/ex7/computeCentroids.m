@@ -27,9 +27,11 @@ centroids = zeros(K, n);
 %
 
 
-
-
-
+for i = 1:K
+  assigned = find(idx == i);
+  values = X(assigned,:);
+  centroids(i,:) = mean(values);
+end
 
 
 

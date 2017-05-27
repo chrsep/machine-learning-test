@@ -1,0 +1,5 @@
+# Created by .ignore support plugin (hsz.mobi)
+.idea/
+notMNIST_small.tar.gz
+notMNIST_large.tar.gz
+scratch.py
